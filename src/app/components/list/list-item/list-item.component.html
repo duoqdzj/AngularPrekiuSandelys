@@ -1,0 +1,23 @@
+
+<div class="alert alert-danger mb3" *ngIf="error!=null" [innerHTML]="error">Ivyko klaida</div>
+    <ul class="list-group">
+        <li class="list-group-item"><b></b> 
+        
+            <picture>
+                <img src="{{preke.pic}}" class="rounded mx-auto d-block" width="mx-auto" height="150">
+              </picture>
+        
+        
+        </li>
+        <li class="list-group-item"><b>Vardas:</b> {{preke.name}}</li>
+        <li class="list-group-item"><b>Aprašymas:</b> {{preke.summary}} </li>
+        <li class="list-group-item"><b>Kiekis:</b> {{preke.quantity}}</li>
+        <li class="list-group-item"><b>Kaina:</b> {{preke.price}}</li>
+
+        <li class="list-group-item">
+            <a class="btn btn-primary" [routerLink]="['/update',preke.id]">Redaguoti</a>&nbsp;
+            
+            <button type="button" class="btn btn-danger" (click)="delete(preke.id)">Ištrinti</button>
+        </li>
+    </ul>
+    

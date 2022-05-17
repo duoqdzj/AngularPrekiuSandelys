@@ -1,0 +1,39 @@
+<div class="col-md-12">
+
+<div class="alert alert-danger mb3" *ngIf="error!=null" [innerHTML]="error">Ivyko klaida</div>
+    
+    <div class="card" *ngIf="!isNotFound">        
+        <div class="card-header">
+            Redaguoti <strong>{{name}}</strong> prekę
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės pavadinimas</label>
+                    <input type="text" class="form-control" [(ngModel)]="name"   name="name" required minlength="3" maxlength="20" #nameL="ngModel">
+                    <span *ngIf="!nameL.valid && nameL.touched" style="color: red;">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei 20 simboliu {{name}}</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės trumpas aprašas</label>
+                    <input type="text" class="form-control" [(ngModel)]="summary"   name="summary" required  maxlength="255" #summuryL="ngModel">
+                    <span *ngIf="!summuryL.valid && summuryL.touched" style="color: red;">Aprasymas ne ilgesnis nei 255 simboliu</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Kiekis</label>
+                    <input type="text" class="form-control" [(ngModel)]="quantity"  name="quantity">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės kaina</label>
+                    <input type="text" class="form-control" [(ngModel)]="price"  name="price" required  #priceL="ngModel">
+                    <span *ngIf="!priceL.valid && priceL.touched " style="color: red;">Kainą įrašyti privaloma</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">prekės nuotrauka</label>
+                    <input type="text" class="form-control" [(ngModel)]="pic"  name="pic">
+                </div>
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Redaguoti</button>
+                <a class="btn btn-info float-end" routerLink="/">Gryžti atgal</a>
+            </form>
+        </div>
+    </div>
+</div>

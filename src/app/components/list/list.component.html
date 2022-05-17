@@ -1,0 +1,34 @@
+
+<div class="col-md-12">
+
+    <div class="alert alert-danger mb3" *ngIf="error!=null" [innerHTML]="error">Ivyko klaida</div>
+
+    <div class="alert alert-danger" *ngIf="isError">
+        Įvyko klaida parsiunčiant duomenis
+    </div>
+
+    <div class="text-center" *ngIf="isLoading && !isError" >
+        <img src="https://i.redd.it/ounq1mw5kdxy.gif" width="mx-auto" height="150">
+    </div>
+
+
+
+    <div class="card">
+        <div class="card-header" *ngIf="!isLoading">
+            Prekių sąrašas
+        </div>
+
+
+
+        <div class="card-body">
+
+
+            <div class="row">
+                <app-list-item *ngFor="let preke of prekiuSarasas; let i=index" class="col-md-4 col-sm-6 col-lg-3 mb-3" [preke]="preke" (afterDelete)="afterDelete($event)"></app-list-item>
+            </div>
+
+
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            Pridėti naują prekę
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės pavadinimas</label>
+                    <input type="text" class="form-control" ngModel  name="name" required minlength="3" maxlength="20" #name="ngModel">
+                    <span *ngIf="!name.valid && name.touched" style="color: red;">Vardas ne trumpesnis nei 3 simboliai ir ne ilgesnis nei 20 simboliu</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės trumpas aprašas</label>
+                    <input type="text" class="form-control" ngModel  name="summary" required  maxlength="255" #summury="ngModel">
+                    <span *ngIf="!summury.valid && summury.touched" style="color: red;">Aprasymas ne ilgesnis nei 255 simboliu</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Kiekis</label>
+                    <input type="text" class="form-control" ngModel  name="quantity">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Prekės kaina</label>
+                    <input type="text" class="form-control" ngModel  name="price" required  #price="ngModel">
+                    <span *ngIf="!price.valid && price.touched " style="color: red;">Kainą įrašyti privaloma</span>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">prekės nuotrauka</label>
+                    <input type="text" class="form-control" ngModel  name="pic">
+                </div>
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Pridėti</button>
+            </form>
+        </div>
+    </div>
+</div>
